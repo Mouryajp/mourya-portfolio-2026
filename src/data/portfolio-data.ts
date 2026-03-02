@@ -3,12 +3,12 @@ import type { PortfolioData } from "@/lib/types";
 export const portfolioData: PortfolioData = {
   site: {
     config: {
-      name: "Mourya",
+      name: "Mourya Janekere",
       title: "Mourya - Generative AI Portfolio",
       description:
         "Portfolio of generative AI systems, product experiments, and creative tooling focused on human-centered outcomes.",
       location: "Bengaluru, India",
-      email: "hello@mourya.ai",
+      email: "mourya.janekere@gmail.com",
       resumeUrl: "/resume.pdf",
     },
     navItems: [

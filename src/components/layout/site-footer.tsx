@@ -1,8 +1,13 @@
 import Link from "next/link";
 
-import { siteConfig, socialLinks, navItems } from "@/data/site";
+import { siteConfig } from "@/data/site";
+import { getNavItems, getSocialLinks } from "@/lib/content";
+import { Separator } from "@/components/ui/separator";
 
 export function SiteFooter() {
+  const navItems = getNavItems();
+  const socialLinks = getSocialLinks();
+
   return (
     <footer className="border-t border-border">
       <div className="mx-auto max-w-7xl px-6 py-12">
@@ -13,7 +18,7 @@ export function SiteFooter() {
               {siteConfig.name}
             </Link>
             <p className="max-w-xs text-sm text-muted-foreground leading-relaxed">
-              Generative AI Full Stack Engineer building production-grade AI systems.
+              {siteConfig.description}
             </p>
           </div>
 
@@ -52,7 +57,8 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <div className="mt-8 border-t border-border pt-6 text-center">
+        <Separator className="mt-8" />
+        <div className="pt-6 text-center">
           <p className="text-xs text-muted-foreground">
             {`\u00A9 ${new Date().getFullYear()} ${siteConfig.name}. Crafted with Next.js, Tailwind CSS, and Framer Motion.`}
           </p>

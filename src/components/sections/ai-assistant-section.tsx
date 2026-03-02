@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import { Bot, Sparkles, Send } from "lucide-react";
 
 import { chatPrompts } from "@/data/site";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 export function AiAssistantSection() {
   return (
@@ -18,12 +22,9 @@ export function AiAssistantSection() {
             transition={{ duration: 0.5 }}
             className="flex-1"
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8 bg-primary" />
-              <span className="text-sm font-medium tracking-wider text-primary uppercase">
-                AI Copilot
-              </span>
-            </div>
+            <Badge variant="outline" className="mb-4">
+              AI Copilot
+            </Badge>
             <h2
               id="ai-assistant-title"
               className="text-3xl font-bold text-foreground sm:text-4xl mb-4 text-balance"
@@ -44,16 +45,14 @@ export function AiAssistantSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex-1 w-full max-w-lg"
           >
-            <div className="relative">
-              <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-primary/10 via-chart-2/10 to-chart-3/10 blur-xl" />
-              <div className="glass-strong relative rounded-2xl p-6">
-                {/* Header */}
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-border">
+            <Card className="glass-strong">
+              <CardHeader className="gap-0 border-b border-border pb-4">
+                <div className="flex items-center gap-3">
                   <div className="flex items-center justify-center size-8 rounded-lg bg-primary/10">
                     <Bot className="size-4 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-foreground">Portfolio Copilot</p>
+                    <CardTitle className="text-sm">Portfolio Copilot</CardTitle>
                     <p className="text-xs text-muted-foreground">Powered by AI</p>
                   </div>
                   <div className="ml-auto flex items-center gap-1.5">
@@ -61,9 +60,9 @@ export function AiAssistantSection() {
                     <span className="text-xs text-muted-foreground">Online</span>
                   </div>
                 </div>
-
-                {/* Messages */}
-                <div className="space-y-4 mb-6">
+              </CardHeader>
+              <CardContent className="space-y-6 pt-6">
+                <div className="space-y-4">
                   <div className="flex gap-3">
                     <div className="flex items-center justify-center size-7 shrink-0 rounded-full bg-primary/10">
                       <Sparkles className="size-3.5 text-primary" />
@@ -78,28 +77,22 @@ export function AiAssistantSection() {
                   </div>
                 </div>
 
-                {/* Prompt chips */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {chatPrompts.map((prompt) => (
-                    <button
-                      key={prompt.id}
-                      type="button"
-                      className="rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground transition-all hover:text-foreground hover:border-primary/30 hover:bg-primary/5"
-                    >
+                    <Button key={prompt.id} type="button" size="sm" variant="outline">
                       {prompt.label}
-                    </button>
+                    </Button>
                   ))}
                 </div>
 
-                {/* Input */}
-                <div className="flex items-center gap-2 rounded-xl border border-border bg-secondary/30 px-4 py-3">
-                  <span className="text-sm text-muted-foreground flex-1">Ask about Mourya...</span>
-                  <div className="flex items-center justify-center size-8 rounded-lg bg-primary/10">
+                <div className="flex items-center gap-2">
+                  <Input readOnly value="Ask about Mourya..." />
+                  <div className="flex size-9 items-center justify-center rounded-lg bg-primary/10">
                     <Send className="size-3.5 text-primary" />
                   </div>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </motion.div>
         </div>
       </div>

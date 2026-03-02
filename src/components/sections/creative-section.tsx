@@ -4,6 +4,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Camera, Pencil, Plane, Music } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 const categories = [
   { id: "all", name: "All", icon: null },
@@ -71,12 +74,9 @@ export function CreativeSection() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8 bg-primary" />
-            <span className="text-sm font-medium tracking-wider text-primary uppercase">
-              Beyond Code
-            </span>
-          </div>
+          <Badge variant="outline" className="mb-4">
+            Beyond Code
+          </Badge>
           <h2
             id="creative-title"
             className="text-3xl font-bold text-foreground sm:text-4xl text-balance"
@@ -94,20 +94,17 @@ export function CreativeSection() {
           className="mb-8 flex flex-wrap gap-2"
         >
           {categories.map((cat) => (
-            <button
+            <Button
               key={cat.id}
               type="button"
               onClick={() => setFilter(cat.id)}
-              className={cn(
-                "flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all",
-                filter === cat.id
-                  ? "bg-primary text-primary-foreground glow-sm"
-                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
-              )}
+              variant={filter === cat.id ? "default" : "ghost"}
+              size="sm"
+              className={cn("flex items-center gap-2", filter === cat.id ? "glow-sm" : "")}
             >
               {cat.icon && <cat.icon className="size-3.5" />}
               {cat.name}
-            </button>
+            </Button>
           ))}
         </motion.div>
 
@@ -127,37 +124,39 @@ export function CreativeSection() {
                 <button
                   type="button"
                   onClick={() => setSelectedItem(item.id)}
-                  className="glass group relative w-full overflow-hidden rounded-xl transition-all hover:glow-sm"
+                  className="group relative w-full overflow-hidden rounded-xl transition-all hover:glow-sm"
                 >
-                  <div
-                    className={cn(
-                      "aspect-[4/3] w-full bg-gradient-to-br",
-                      item.color,
-                      item.id % 3 === 0 && "aspect-square",
-                      item.id % 5 === 0 && "aspect-[3/4]"
-                    )}
-                  >
-                    <div className="flex h-full items-center justify-center">
-                      {item.category === "photography" && (
-                        <Camera className="size-8 text-muted-foreground/50" />
+                  <Card className="glass overflow-hidden py-0">
+                    <div
+                      className={cn(
+                        "aspect-[4/3] w-full bg-gradient-to-br",
+                        item.color,
+                        item.id % 3 === 0 && "aspect-square",
+                        item.id % 5 === 0 && "aspect-[3/4]"
                       )}
-                      {item.category === "sketches" && (
-                        <Pencil className="size-8 text-muted-foreground/50" />
-                      )}
-                      {item.category === "travel" && (
-                        <Plane className="size-8 text-muted-foreground/50" />
-                      )}
-                      {item.category === "music" && (
-                        <Music className="size-8 text-muted-foreground/50" />
-                      )}
+                    >
+                      <div className="flex h-full items-center justify-center">
+                        {item.category === "photography" && (
+                          <Camera className="size-8 text-muted-foreground/50" />
+                        )}
+                        {item.category === "sketches" && (
+                          <Pencil className="size-8 text-muted-foreground/50" />
+                        )}
+                        {item.category === "travel" && (
+                          <Plane className="size-8 text-muted-foreground/50" />
+                        )}
+                        {item.category === "music" && (
+                          <Music className="size-8 text-muted-foreground/50" />
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <div className="absolute inset-0 flex items-end bg-gradient-to-t from-background/80 to-transparent opacity-0 transition-opacity group-hover:opacity-100">
-                    <div className="p-4">
-                      <p className="text-sm font-medium text-foreground">{item.title}</p>
-                      <p className="text-xs text-muted-foreground capitalize">{item.category}</p>
+                    <div className="absolute inset-0 flex items-end bg-gradient-to-t from-background/80 to-transparent opacity-0 transition-opacity group-hover:opacity-100">
+                      <div className="p-4">
+                        <p className="text-sm font-medium text-foreground">{item.title}</p>
+                        <p className="text-xs text-muted-foreground capitalize">{item.category}</p>
+                      </div>
                     </div>
-                  </div>
+                  </Card>
                 </button>
               </motion.div>
             ))}
@@ -178,45 +177,49 @@ export function CreativeSection() {
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.9 }}
-                className="glass-strong relative max-w-2xl w-full rounded-2xl overflow-hidden"
+                className="relative w-full max-w-2xl overflow-hidden rounded-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
-                <button
-                  type="button"
-                  onClick={() => setSelectedItem(null)}
-                  className="absolute top-4 right-4 z-10 rounded-lg p-2 text-muted-foreground hover:text-foreground glass"
-                  aria-label="Close"
-                >
-                  <X className="size-4" />
-                </button>
-                {(() => {
-                  const item = creativeItems.find((i) => i.id === selectedItem);
-                  if (!item) return null;
-                  return (
-                    <div>
-                      <div className={cn("aspect-video w-full bg-gradient-to-br", item.color)}>
-                        <div className="flex h-full items-center justify-center">
-                          {item.category === "photography" && (
-                            <Camera className="size-16 text-muted-foreground/30" />
-                          )}
-                          {item.category === "sketches" && (
-                            <Pencil className="size-16 text-muted-foreground/30" />
-                          )}
-                          {item.category === "travel" && (
-                            <Plane className="size-16 text-muted-foreground/30" />
-                          )}
-                          {item.category === "music" && (
-                            <Music className="size-16 text-muted-foreground/30" />
-                          )}
+                <Card className="glass-strong overflow-hidden py-0">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedItem(null)}
+                    className="absolute top-4 right-4 z-10 rounded-lg p-2 text-muted-foreground hover:text-foreground glass"
+                    aria-label="Close"
+                  >
+                    <X className="size-4" />
+                  </button>
+                  {(() => {
+                    const item = creativeItems.find((i) => i.id === selectedItem);
+                    if (!item) return null;
+                    return (
+                      <div>
+                        <div className={cn("aspect-video w-full bg-gradient-to-br", item.color)}>
+                          <div className="flex h-full items-center justify-center">
+                            {item.category === "photography" && (
+                              <Camera className="size-16 text-muted-foreground/30" />
+                            )}
+                            {item.category === "sketches" && (
+                              <Pencil className="size-16 text-muted-foreground/30" />
+                            )}
+                            {item.category === "travel" && (
+                              <Plane className="size-16 text-muted-foreground/30" />
+                            )}
+                            {item.category === "music" && (
+                              <Music className="size-16 text-muted-foreground/30" />
+                            )}
+                          </div>
                         </div>
+                        <CardContent className="p-6">
+                          <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
+                          <p className="text-sm text-muted-foreground capitalize">
+                            {item.category}
+                          </p>
+                        </CardContent>
                       </div>
-                      <div className="p-6">
-                        <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-                        <p className="text-sm text-muted-foreground capitalize">{item.category}</p>
-                      </div>
-                    </div>
-                  );
-                })()}
+                    );
+                  })()}
+                </Card>
               </motion.div>
             </motion.div>
           )}
