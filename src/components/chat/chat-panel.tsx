@@ -132,7 +132,7 @@ export function ChatPanel({ showHeader = true }: ChatPanelProps) {
 
   const sectionProps = showHeader
     ? { "aria-labelledby": "chat-title" }
-    : { "aria-label": "Portfolio copilot" };
+    : { "aria-label": chatContent.intro.title };
 
   return (
     <section {...sectionProps}>

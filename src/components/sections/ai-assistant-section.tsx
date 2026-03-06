@@ -3,13 +3,17 @@
 import { motion } from "framer-motion";
 import { Bot, Sparkles, Send } from "lucide-react";
 
-import { chatPrompts } from "@/data/site";
+import { getHomePageContent } from "@/lib/content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
 export function AiAssistantSection() {
+  const {
+    assistant: { badge, title, description, greeting, inputPlaceholder, prompts },
+  } = getHomePageContent();
+
   return (
     <section aria-labelledby="ai-assistant-title" className="relative">
       <div className="mx-auto max-w-7xl px-6 py-24">
@@ -23,17 +27,16 @@ export function AiAssistantSection() {
             className="flex-1"
           >
             <Badge variant="outline" className="mb-4">
-              AI Copilot
+              {badge}
             </Badge>
             <h2
               id="ai-assistant-title"
               className="text-3xl font-bold text-foreground sm:text-4xl mb-4 text-balance"
             >
-              Ask me about Mourya
+              {title}
             </h2>
             <p className="text-muted-foreground leading-relaxed max-w-md text-pretty">
-              An AI-powered assistant trained on my portfolio, experience, and expertise. Ask
-              anything about my work, tech stack, or collaboration style.
+              {description}
             </p>
           </motion.div>
 
@@ -68,17 +71,13 @@ export function AiAssistantSection() {
                       <Sparkles className="size-3.5 text-primary" />
                     </div>
                     <div className="glass rounded-xl rounded-tl-none px-4 py-3">
-                      <p className="text-sm text-foreground">
-                        {
-                          "Hi! I'm Mourya's portfolio assistant. I can tell you about his AI projects, tech stack, or work experience. What would you like to know?"
-                        }
-                      </p>
+                      <p className="text-sm text-foreground">{greeting}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {chatPrompts.map((prompt) => (
+                  {prompts.map((prompt) => (
                     <Button key={prompt.id} type="button" size="sm" variant="outline">
                       {prompt.label}
                     </Button>
@@ -86,7 +85,7 @@ export function AiAssistantSection() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Input readOnly value="Ask about Mourya..." />
+                  <Input readOnly value={inputPlaceholder} />
                   <div className="flex size-9 items-center justify-center rounded-lg bg-primary/10">
                     <Send className="size-3.5 text-primary" />
                   </div>

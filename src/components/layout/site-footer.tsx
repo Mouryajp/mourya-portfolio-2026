@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import { siteConfig } from "@/data/site";
-import { getNavItems, getSocialLinks } from "@/lib/content";
+import { getNavItems, getSiteConfig, getSocialLinks } from "@/lib/content";
 import { Separator } from "@/components/ui/separator";
 
 export function SiteFooter() {
+  const siteConfig = getSiteConfig();
   const navItems = getNavItems();
   const socialLinks = getSocialLinks();
 

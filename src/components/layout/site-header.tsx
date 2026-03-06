@@ -3,17 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Download, MessageCircle } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 
-import { getNavItems } from "@/lib/content";
-import { siteConfig } from "@/data/site";
-import { useChatLayout } from "@/components/chat/chat-layout-context";
+import { getNavItems, getSiteConfig } from "@/lib/content";
 import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
   const items = getNavItems();
+  const siteConfig = getSiteConfig();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { openChat } = useChatLayout();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-strong">
@@ -36,10 +34,10 @@ export function SiteHeader() {
               {item.title}
             </Link>
           ))}
-          <Button variant="ghost" size="sm" onClick={openChat}>
+          {/* <Button variant="ghost" size="sm" onClick={openChat}>
             <MessageCircle className="size-3.5" />
             Chat
-          </Button>
+          </Button> */}
           <Button
             asChild
             size="sm"
@@ -83,7 +81,7 @@ export function SiteHeader() {
                     </Link>
                   </li>
                 ))}
-                <li>
+                {/* <li>
                   <Button
                     variant="ghost"
                     className="w-full justify-start"
@@ -95,7 +93,7 @@ export function SiteHeader() {
                     <MessageCircle className="size-4" />
                     Chat
                   </Button>
-                </li>
+                </li> */}
                 <li className="pt-2">
                   <Button
                     asChild

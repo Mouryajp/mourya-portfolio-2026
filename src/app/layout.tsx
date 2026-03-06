@@ -2,7 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-import { siteConfig } from "@/data/site";
+import { getSiteConfig } from "@/lib/content";
+
+const siteConfig = getSiteConfig();
 
 const inter = Inter({
   subsets: ["latin"],
