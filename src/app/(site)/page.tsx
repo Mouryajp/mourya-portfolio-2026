@@ -16,8 +16,8 @@ export default function HomePage() {
       <TimelineSection />
       <ProjectsSection />
       <StackSection />
-      <AiAssistantSection />
       <CreativeSection />
+      <AiAssistantSection />
       <CtaSection />
       <ContactSection />
     </div>

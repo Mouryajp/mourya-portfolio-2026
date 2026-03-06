@@ -1,0 +1,207 @@
+{
+  "personal": {
+    "name": "Mourya J P",
+    "title": "Generative AI Full Stack Engineer",
+    "location": "Bangalore, India",
+    "tagline": "Building autonomous AI systems and production-grade full-stack applications.",
+    "bio": "Generative AI engineer and full-stack developer specializing in LLM-powered applications, agent orchestration, and scalable web platforms. Experienced in building RAG systems, AI assistants, and end-to-end production deployments using modern web technologies.",
+    "email": "mourya.janekere@gmail.com",
+    "phone": "+91-8310715279",
+    "socials": {
+      "github": "https://github.com/Mouryajp",
+      "linkedin": "https://www.linkedin.com/in/mouryajanekere/",
+      "instagram": "https://www.instagram.com/mouryajanekere/"
+    }
+  },
+
+  "experience": [
+    {
+      "company": "FYND (Shopsense Retail Technologies Limited)",
+      "role": "Generative AI Developer",
+      "location": "Bangalore, India",
+      "duration": "Sep 2025 - Present",
+      "description": "Developing production-grade AI systems and intelligent agent workflows for enterprise applications.",
+      "responsibilities": [
+        "Building autonomous AI workflows using LangGraph",
+        "Developing Retrieval-Augmented Generation pipelines",
+        "Implementing scalable AI-powered interfaces using Next.js",
+        "Integrating OpenAI and Claude models into production workflows",
+        "Optimizing MongoDB data pipelines for AI-driven applications",
+        "Maintaining CI/CD workflows using Azure DevOps"
+      ],
+      "technologies": [
+        "LangGraph",
+        "OpenAI",
+        "Claude",
+        "Next.js",
+        "Tailwind CSS",
+        "MongoDB",
+        "REST APIs",
+        "Azure DevOps"
+      ]
+    },
+    {
+      "company": "Webifii",
+      "role": "MERN Stack Developer (Trainee)",
+      "location": "Bangalore, India",
+      "duration": "Aug 2025 - Sep 2025",
+      "description": "Developed scalable full-stack client applications using MERN technologies.",
+      "responsibilities": [
+        "Developed client-facing applications using React Native and Next.js",
+        "Implemented REST API integrations and backend services",
+        "Worked on Shopify integrations and custom applications",
+        "Collaborated on database design and API architecture"
+      ],
+      "technologies": ["React Native", "Next.js", "Node.js", "Express.js", "MongoDB", "REST APIs"]
+    },
+    {
+      "company": "FYND (Shopsense Retail Technologies Limited)",
+      "role": "Full Stack Developer Intern",
+      "location": "Bangalore, India",
+      "duration": "Jul 2024 - Dec 2024",
+      "description": "Worked on AI-driven internal platforms and full-stack product development.",
+      "responsibilities": [
+        "Contributed to Ratl.ai, an autonomous QA, DevOps, and TechOps AI agent platform",
+        "Developed scalable frontend features using Next.js",
+        "Optimized MongoDB database integrations",
+        "Worked with Git workflows and code review processes",
+        "Managed deployments using Azure DevOps pipelines"
+      ],
+      "technologies": ["Next.js", "MongoDB", "Git", "Azure DevOps"]
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "HarmoniAI",
+      "tagline": "RAG-powered mental health assistant",
+      "description": "A retrieval-augmented AI chatbot designed to provide contextual mental health support using semantic search and conversational AI.",
+      "problem": "Generic chatbots lack contextual understanding and relevant knowledge retrieval for mental health assistance.",
+      "solution": "Built a RAG architecture combining vector retrieval and LLM reasoning to deliver contextual responses.",
+      "technologies": [
+        "Next.js",
+        "LangChain",
+        "DataStax Astra",
+        "Google AI Studio",
+        "Tailwind CSS",
+        "Shadcn UI"
+      ],
+      "features": [
+        "Semantic search with vector embeddings",
+        "Context-aware AI responses",
+        "Streaming conversational interface",
+        "Responsive modern UI"
+      ],
+      "links": {
+        "live": "https://harmoni-ai-beta.vercel.app/",
+        "github": "https://github.com/jp-mourya"
+      }
+    },
+    {
+      "name": "ToxiTrace",
+      "tagline": "Multimodal mental well-being detection system",
+      "description": "A machine learning system that predicts mental health conditions using both acoustic voice features and survey data.",
+      "problem": "Mental health analysis often relies on single-source inputs, reducing predictive accuracy.",
+      "solution": "Designed a multimodal pipeline combining acoustic voice analysis with PHQ-9 questionnaire evaluation.",
+      "technologies": ["Python", "FastAPI", "XGBoost", "Scikit-learn", "Parselmouth"],
+      "features": [
+        "Multimodal prediction pipeline",
+        "Real-time inference API",
+        "Voice feature extraction",
+        "Machine learning ensemble models"
+      ],
+      "links": {
+        "github": "https://github.com/jp-mourya"
+      }
+    },
+    {
+      "name": "Developer Blogging Platform",
+      "tagline": "Full-stack blog platform built with Next.js",
+      "description": "A modern blogging platform enabling content creation and publishing with optimized performance.",
+      "technologies": ["Next.js", "MongoDB Atlas", "Shadcn UI", "Tailwind CSS", "Vercel"],
+      "features": [
+        "Responsive UI",
+        "Content management",
+        "Cloud deployment",
+        "Modern developer experience"
+      ]
+    }
+  ],
+
+  "skills": {
+    "generative_ai": [
+      "LangGraph",
+      "LLM Orchestration",
+      "RAG Architecture",
+      "Prompt Engineering",
+      "AI Agent Systems"
+    ],
+    "frontend": ["Next.js", "React", "Tailwind CSS", "Shadcn UI", "Framer Motion"],
+    "backend": ["Node.js", "Express.js", "FastAPI", "REST APIs", "Proxy APIs"],
+    "database": ["MongoDB", "MongoDB Atlas", "Vector Databases"],
+    "devops": ["Git", "Azure DevOps", "Vercel", "CI/CD"],
+    "languages": ["JavaScript", "Python", "Java", "HTML", "CSS"]
+  },
+
+  "education": [
+    {
+      "degree": "B.Tech in Computer Science",
+      "institution": "Dayananda Sagar University",
+      "location": "Bangalore",
+      "duration": "2021 - 2025"
+    },
+    {
+      "degree": "Senior Secondary (XII)",
+      "institution": "Karkala Jnanasudha PU College",
+      "location": "Udupi",
+      "duration": "2019 - 2021"
+    }
+  ],
+
+  "creative": {
+    "categories": ["photography", "sketches", "travel", "music"],
+    "description": "Beyond engineering, I explore creativity through photography, visual arts, and music.",
+    "items": [
+      {
+        "id": "photo-1",
+        "title": "Wildlife Photography",
+        "category": "photography",
+        "description": "Capturing wildlife and natural environments through candid photography."
+      },
+      {
+        "id": "sketch-1",
+        "title": "Pencil Sketch Art",
+        "category": "sketches",
+        "description": "Detailed pencil sketches focusing on realism and expression."
+      },
+      {
+        "id": "travel-1",
+        "title": "Travel Blogging",
+        "category": "travel",
+        "description": "Documenting travel experiences and landscapes."
+      },
+      {
+        "id": "music-1",
+        "title": "Music Practice",
+        "category": "music",
+        "description": "Playing guitar and keyboard as creative exploration."
+      }
+    ]
+  },
+
+  "ai_assistant": {
+    "suggested_prompts": [
+      "Summarize Mourya's experience",
+      "Explain the HarmoniAI architecture",
+      "What technologies does Mourya specialize in?",
+      "Tell me about Mourya's AI projects",
+      "What roles is Mourya best suited for?"
+    ]
+  },
+
+  "contact": {
+    "message": "Interested in collaborating or discussing AI systems? Feel free to reach out.",
+    "email": "mourya.janekere@gmail.com",
+    "location": "Bangalore, India"
+  }
+}

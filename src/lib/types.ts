@@ -27,7 +27,7 @@ export type TimelineEntry = {
 export type StackItem = {
   id: string;
   name: string;
-  category: "Models" | "Product" | "Infra" | "Research" | "Creative" | "Ops";
+  category: string;
   level?: "core" | "advanced" | "experimental";
 };
 
@@ -62,9 +62,40 @@ export type LabExperiment = {
   tags: string[];
 };
 
+export type CreativeCategory = "photography" | "sketches" | "travel" | "music";
+
+export type CreativeCategoryOption = {
+  id: CreativeCategory;
+  label: string;
+};
+
+export type CreativeItem = {
+  id: string;
+  title: string;
+  category: CreativeCategory;
+  image: {
+    src: string;
+    width: number;
+    height: number;
+    blurDataURL: string;
+  };
+  description: string;
+  metadata?: {
+    location?: string;
+    gear?: string;
+    year?: string;
+  };
+};
+
 export type HeroContent = {
+  eyebrow: string;
+  name: string;
+  title: string;
+  intro: string;
   headline: string;
   subhead: string;
+  imageAlt: string;
+  socialLinks: SocialLink[];
   primaryCta: { label: string; href: string };
   secondaryCta: { label: string; href: string };
 };
@@ -96,9 +127,7 @@ export type ContactFormField = {
 };
 
 export type HomePageContent = {
-  hero: HeroContent & {
-    eyebrow: string;
-  };
+  hero: HeroContent;
   metrics: {
     title: string;
     items: Metric[];
@@ -114,6 +143,21 @@ export type HomePageContent = {
   labs: {
     title: string;
     items: LabExperiment[];
+  };
+  creative: {
+    badge: string;
+    title: string;
+    description: string;
+    categories: CreativeCategoryOption[];
+    items: CreativeItem[];
+  };
+  assistant: {
+    badge: string;
+    title: string;
+    description: string;
+    greeting: string;
+    inputPlaceholder: string;
+    prompts: ChatPrompt[];
   };
   cta: {
     title: string;
