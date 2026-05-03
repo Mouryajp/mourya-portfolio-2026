@@ -28,11 +28,19 @@ const createPrompt = ({ query, context, history }: WorkflowState) => {
   ].join("\n\n");
 };
 
+const MAX_QUERY_LENGTH = 500;
+
+const sanitizeInput = (text: string): string =>
+  text
+    .slice(0, MAX_QUERY_LENGTH)
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "")
+    .trim();
+
 export const runWorkflow = async (request: ChatRequest) => {
   const lastUserMessage = [...request.messages]
     .reverse()
     .find((message) => message.role === "user");
-  const query = lastUserMessage?.content ?? "";
+  const query = sanitizeInput(lastUserMessage?.content ?? "");
   const state: WorkflowState = {
     query,
     history: buildHistory(request),

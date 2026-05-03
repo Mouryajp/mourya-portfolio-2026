@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { getChatPageContent } from "@/lib/content";
-import type { ChatMessage, ChatRequest } from "@/lib/ai/types";
+import type { ChatMessage } from "@/lib/ai/types";
 import { ChatComposer } from "@/components/chat/chat-composer";
 import { ChatEmptyState } from "@/components/chat/chat-empty-state";
 import { ChatMessageList } from "@/components/chat/chat-message-list";
@@ -27,14 +27,6 @@ export function ChatPanel({ showHeader = true }: ChatPanelProps) {
   const [error, setError] = useState<string | null>(null);
 
   const hasMessages = messages.length > 0;
-
-  const requestPayload = useMemo<ChatRequest>(
-    () => ({
-      messages,
-      context: { page: "/chat", intent: "portfolio" },
-    }),
-    [messages]
-  );
 
   const appendAssistantDelta = useCallback((id: string, delta: string) => {
     setMessages((prev) =>
@@ -81,8 +73,8 @@ export function ChatPanel({ showHeader = true }: ChatPanelProps) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            ...requestPayload,
             messages: nextMessages,
+            context: { page: "/chat", intent: "portfolio" },
           }),
         });
 
@@ -126,7 +118,6 @@ export function ChatPanel({ showHeader = true }: ChatPanelProps) {
       chatContent.status.serviceErrorMessage,
       isLoading,
       messages,
-      requestPayload,
     ]
   );
 

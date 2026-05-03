@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getCaseStudyBySlug, getCaseStudyParams, getWorkPageContent } from "@/lib/content";
@@ -8,6 +9,21 @@ import { Separator } from "@/components/ui/separator";
 export const dynamicParams = false;
 
 export const generateStaticParams = () => getCaseStudyParams();
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const study = getCaseStudyBySlug(slug);
+  if (!study) return {};
+  return {
+    title: study.title,
+    description: study.summary,
+    openGraph: { title: study.title, description: study.summary },
+  };
+}
 
 export default async function WorkDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

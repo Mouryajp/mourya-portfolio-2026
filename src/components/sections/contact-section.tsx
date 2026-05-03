@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 
 import { getContactPageContent } from "@/lib/content";
@@ -12,6 +13,22 @@ import { Textarea } from "@/components/ui/textarea";
 
 export function ContactSection() {
   const { intro, channels, form } = getContactPageContent();
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const name = (data.get("name") as string) || "";
+    const email = (data.get("email") as string) || "";
+    const message = (data.get("message") as string) || "";
+    const subject = `Portfolio inquiry from ${name}`;
+    const body = `${message}\n\nFrom: ${name} (${email})`;
+    window.open(
+      `mailto:mourya.janekere@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+      "_self"
+    );
+    setSubmitted(true);
+  };
 
   return (
     <section aria-labelledby="contact-title" className="mx-auto w-full max-w-7xl px-6 py-16">
@@ -43,24 +60,31 @@ export function ContactSection() {
             <CardTitle>Send message</CardTitle>
           </CardHeader>
           <CardContent>
-            <form className="space-y-4">
-              {form.fields.map((field) => (
-                <div key={field.id} className="space-y-2">
-                  <Label htmlFor={field.id}>{field.label}</Label>
-                  {field.type === "textarea" ? (
-                    <Textarea id={field.id} name={field.name} rows={field.rows ?? 4} />
-                  ) : (
-                    <Input
-                      id={field.id}
-                      name={field.name}
-                      type={field.type}
-                      autoComplete={field.autoComplete}
-                    />
-                  )}
-                </div>
-              ))}
-              <Button type="submit">{form.submitLabel}</Button>
-            </form>
+            {submitted ? (
+              <p className="text-sm text-muted-foreground">
+                Your email client should have opened with the message. Thank you for reaching out!
+              </p>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {form.fields.map((field) => (
+                  <div key={field.id} className="space-y-2">
+                    <Label htmlFor={field.id}>{field.label}</Label>
+                    {field.type === "textarea" ? (
+                      <Textarea id={field.id} name={field.name} rows={field.rows ?? 4} required />
+                    ) : (
+                      <Input
+                        id={field.id}
+                        name={field.name}
+                        type={field.type}
+                        autoComplete={field.autoComplete}
+                        required
+                      />
+                    )}
+                  </div>
+                ))}
+                <Button type="submit">{form.submitLabel}</Button>
+              </form>
+            )}
           </CardContent>
         </Card>
       </div>

@@ -34,10 +34,6 @@ export function SiteHeader() {
               {item.title}
             </Link>
           ))}
-          {/* <Button variant="ghost" size="sm" onClick={openChat}>
-            <MessageCircle className="size-3.5" />
-            Chat
-          </Button> */}
           <Button
             asChild
             size="sm"
@@ -81,19 +77,6 @@ export function SiteHeader() {
                     </Link>
                   </li>
                 ))}
-                {/* <li>
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start"
-                    onClick={() => {
-                      setMobileOpen(false);
-                      openChat();
-                    }}
-                  >
-                    <MessageCircle className="size-4" />
-                    Chat
-                  </Button>
-                </li> */}
                 <li className="pt-2">
                   <Button
                     asChild

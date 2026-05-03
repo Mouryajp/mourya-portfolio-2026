@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import type { ChatRequest } from "@/lib/ai/types";
 import { runWorkflow } from "@/lib/ai/workflow";
 import { streamAssistantResponse } from "@/lib/ai/streaming";
+import { checkRateLimit } from "@/lib/ai/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -13,6 +14,15 @@ const isValidRequest = (payload: unknown): payload is ChatRequest => {
 };
 
 export async function POST(request: Request) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const { allowed, retryAfterMs } = checkRateLimit(ip);
+  if (!allowed) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again shortly." },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(retryAfterMs / 1000)) } }
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
