@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
+
 import { getProjectsPageContent } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Real-world builds across generative AI, machine learning, and full-stack systems by Mourya J P.",
+};
 import { ProjectCard } from "@/components/cards/project-card";
 import { Separator } from "@/components/ui/separator";
 

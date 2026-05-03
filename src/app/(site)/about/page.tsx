@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
+
 import { StackSection } from "@/components/sections/stack-section";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Experience, skills, and background of Mourya J P — Generative AI Full Stack Engineer.",
+};
 import { TimelineSection } from "@/components/sections/timeline-section";
 import { getAboutPageContent } from "@/lib/content";
 import { Separator } from "@/components/ui/separator";

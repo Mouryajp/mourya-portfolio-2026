@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
+
 import { getWorkPageContent } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Work",
+  description: "Deep dives into real projects, architecture choices, and shipped outcomes.",
+};
 import { CaseStudyCard } from "@/components/cards/case-study-card";
 import { Separator } from "@/components/ui/separator";
 

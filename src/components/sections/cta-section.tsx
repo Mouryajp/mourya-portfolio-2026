@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { getHomePageContent } from "@/lib/content";
 import { Reveal } from "@/components/motion/reveal";

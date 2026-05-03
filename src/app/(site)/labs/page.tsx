@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
+
 import { getLabsPageContent } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Labs",
+  description: "Technical experiments in RAG retrieval, multimodal ML, and content platform optimization.",
+};
 import { LabCard } from "@/components/cards/lab-card";
 import { Separator } from "@/components/ui/separator";
 
